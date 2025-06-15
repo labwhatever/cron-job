@@ -1,0 +1,15 @@
+name: Keep Render Alive
+on:
+  schedule:
+    - cron: '*/5 * * * *' 
+  workflow_dispatch: 
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔁 Ping Render backend
+        run: |
+          curl -s https://sketchkaro.onrender.com > /dev/null
+          curl -s https://sketchkaro-ws.onrender.com?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDQ0NDdmZi01N2EyLTQ0OTktYWM0Zi1iMWZiMmZlNDQ1MGMiLCJpYXQiOjE3NTAwMTE3OTh9.U2tIFd7jSNyREvkeOJeHhej3Iq9CjL-8gm6qgl_BJwE > /dev/null
+          curl -s https://test-app-latest-34lq.onrender.com >/dev/null
